@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <p v-for="message in messages">{{ message }}</p>
   </div>
 </template>
 
@@ -8,8 +8,12 @@
 export default {
   data: function () {
     return {
-      message: "Hello Vue!"
+      messages: []
     }
+  },
+
+  mounted() {
+    window.MessageComponent = this
   }
 }
 </script>

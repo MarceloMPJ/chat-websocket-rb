@@ -19,7 +19,7 @@ document.addEventListener('turbolinks:load', () => {
   const element = document.getElementById('app')
 
   if(element != null) {
-    const app = new Vue({
+    new Vue({
       el: element,
       render: h => h(App)
     }).$mount()
