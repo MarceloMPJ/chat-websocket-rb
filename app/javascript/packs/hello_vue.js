@@ -7,15 +7,20 @@
 
 import Vue from 'vue'
 import TurbolinksAdapter from 'vue-turbolinks'
-import VueResource from 'vue-resource'
+import axios from 'axios'
 
 import App from '../app.vue'
 
-Vue.use(VueResource)
+axios.defaults.headers.common = {
+  'X-Requested-With': 'XMLHttpRequest',
+  'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+}
+
+Vue.prototype.$http = axios
+
 Vue.use(TurbolinksAdapter)
 
 document.addEventListener('turbolinks:load', () => {
-  Vue.http.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
   const element = document.getElementById('app')
 
   if(element != null) {

@@ -14,6 +14,6 @@ consumer.subscriptions.create({ channel: "ChatChannel", room: "BestRoom" }, {
   },
 
   received(data) {
-    window.MessageComponent.messages.push(data['body'])
+    window.MessageComponent.messages.push({ message: data['message'], user: data['user'] })
   }
 })
